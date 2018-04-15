@@ -2,8 +2,8 @@ import urllib.request
 import time
 import pygame
 import json
-pygame.init()
 
+pygame.init()
 baah = pygame.mixer.Sound("baaah.wav")
 
 with urllib.request.urlopen("https://blockchain.info/ticker") as output:
@@ -27,5 +27,5 @@ while True:
         baah.play()
     with urllib.request.urlopen("https://blockchain.info/ticker") as output:
         current_response = json.loads(output.read().decode('utf-8'))
-        current_amount = current_response["USD"]["15m"]
+    current_amount = current_response["USD"]["15m"]
     time.sleep(interval)
