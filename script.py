@@ -11,7 +11,7 @@ with urllib.request.urlopen("https://blockchain.info/ticker") as output:
 
 base_amount = response["USD"]["15m"]
 
-print("\n\nBase amount: $" + str(base_amount) + "\n\n")
+print("\n\nBase amount: ${}\n\n".format(base_amount))
 
 interval = int(input("Enter the time interval for performing the check (seconds): "))
 
@@ -21,8 +21,8 @@ current_amount = current_response["USD"]["15m"]
 
 while True:
 
-    percentage_change = (float(current_amount) - float(base_amount)) / float(base_amount)
-    print("Deviation from base amount: " + str(percentage_change) + "%" + " ------- $" + str(current_amount))
+    percentage_change = (current_amount - base_amount)/base_amount
+    print("Deviation from base amount: {}% ------- ${}".format(percentage_change, current_amount))
     if percentage_change > 0.00010 or percentage_change < -0.00010:
         baah.play()
     with urllib.request.urlopen("https://blockchain.info/ticker") as output:
